@@ -1,8 +1,9 @@
+language: generic
 sudo: required
 services:
   - docker
 before_install:
-  - docker build -t prasanth/docker-react:latest -f Dockerfile.dev .
+  - docker build -t prasanth/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run prasanth/docker-react:latest npm run test -- --coverage
+  - docker run -e CI=true prasanth/docker-react npm run test
